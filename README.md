@@ -1,5 +1,5 @@
 # CNPMNC-Nhóm17
-Bảng điểm từng thành viên qua các sprint:
+<ins> Bảng điểm từng thành viên qua các sprint: </code>
 
 | Họ tên | Sprint 1 | Sprint 2 | Sprint 3 | Sprint 4 |
 |---|---|---|---|---|
@@ -9,7 +9,7 @@ Bảng điểm từng thành viên qua các sprint:
 | Trần Duy Thắng | 9 | 10 | 8 | - |
 | Lữ Trung Tín | 9 | 8 | 10 | - |
  
-<b><ins> • Giới yêu cầu phần mềm của dự án </code></b>
+<b><code> • Giới yêu cầu phần mềm của dự án </code></b>
 
 Đây là link mô tả yêu cầu phần mềm của dự án nhóm chúng em: [Nhom17_Word](https://docs.google.com/document/d/1uN3Sz8XgEv7DOM15Pij1ZkM7GRmbQeCq/edit)
 
