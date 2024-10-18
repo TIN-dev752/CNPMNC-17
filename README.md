@@ -1,7 +1,7 @@
 # <mark> CNPMNC-Nhóm17 </mark>
 <ins> Bảng điểm từng thành viên qua các sprint: </code>
 
-| <th style="background-color: #cccccc; color: #000080;"> Họ tên</th> | Sprint 1 | Sprint 2 | Sprint 3 | Sprint 4 |
+| Họ tên | Sprint 1 | Sprint 2 | Sprint 3 | Sprint 4 |
 |---|---|---|---|---|
 | Nguyễn Chí Thành | 9 | 10 | 8 | - |
 | Trần Lê Thi | 8 | 10 | 9 | - |
