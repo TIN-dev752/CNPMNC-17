@@ -10,7 +10,7 @@ Bảng điểm từng thành viên qua các sprint:
 | Lữ Trung Tín | 9 | 8 | 10 | - |
 
 * <del>Văn bản bị gạch ngang</del>
- <u>Văn bản có gạch chân</u>
+ <u> Văn bản có gạch chân </u>
  <code>Đây là một đoạn mã</code>
  <mark>Từ khóa được tìm kiếm</mark>
  <small>Văn bản kích thước nhỏ</small>
