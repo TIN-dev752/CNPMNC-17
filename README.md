@@ -9,7 +9,7 @@ Bảng điểm từng thành viên qua các sprint:
 | Trần Duy Thắng | 9 | 10 | 8 | - |
 | Lữ Trung Tín | 9 | 8 | 10 | - |
  
-<b><Code> • Giới yêu cầu phần mềm của dự án </code></b>
+<b><ins> • Giới yêu cầu phần mềm của dự án </code></b>
 
 Đây là link mô tả yêu cầu phần mềm của dự án nhóm chúng em: [Nhom17_Word](https://docs.google.com/document/d/1uN3Sz8XgEv7DOM15Pij1ZkM7GRmbQeCq/edit)
 
