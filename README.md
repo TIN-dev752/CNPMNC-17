@@ -15,7 +15,7 @@
 Đây là link mô tả yêu cầu phần mềm của dự án nhóm chúng em: [Nhom17_Word](https://docs.google.com/document/d/1uN3Sz8XgEv7DOM15Pij1ZkM7GRmbQeCq/edit)
 
 
-# <b><Code> • Các thông tin, kế hoạch và tiến độ dự án đang thực hiện </code></b>
+# <b><Code> • Thông tin, kế hoạch và tiến độ dự án đang thực hiện </code></b>
 
 Đây là link bao gồm Project Information, Team, Product Backlog, Sprint Backlog của nhóm em: [Nhom17_Excel](https://docs.google.com/spreadsheets/d/16p2DCYpoui8g2PTtO-b5eJkTmM66cDoNGHBrC5fYysY/edit?usp=sharing)
 
