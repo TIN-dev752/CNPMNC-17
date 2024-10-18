@@ -31,6 +31,7 @@ Sprint 3:
 Planning
 
 <b><Code> • Thiết kế dự án </code></b>
+
 Đây là link thiết kế dự án trên figma của nhóm em: [Nhom17_Figma](https://www.figma.com/design/ML3ZcmMF1TbsT9wgJnGTR6/Nh%C3%B3m-17---Web-b%C3%A1n-th%E1%BB%A9c-%C4%83n-nhanh?t=j2MgEalOcBmumlGS-0)
 
 
