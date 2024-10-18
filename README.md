@@ -10,7 +10,7 @@ Bảng điểm từng thành viên qua các sprint:
 | Lữ Trung Tín | 9 | 8 | 10 | - |
 
 
-<b> • Giới yêu cầu phần mềm của dự án </b>
+<b><del> • Giới yêu cầu phần mềm của dự án </del></b>
 
 Đây là link mô tả yêu cầu phần mềm của dự án nhóm chúng em: [Nhom17_Word](https://docs.google.com/document/d/1uN3Sz8XgEv7DOM15Pij1ZkM7GRmbQeCq/edit)
 
