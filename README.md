@@ -19,7 +19,7 @@
 
 Đây là link bao gồm Project Information, Team, Product Backlog, Sprint Backlog của nhóm em: [Nhom17_Excel](https://docs.google.com/spreadsheets/d/16p2DCYpoui8g2PTtO-b5eJkTmM66cDoNGHBrC5fYysY/edit?usp=sharing)
 
-Hiện tại đang các sprint: 
+Hiện tại các sprint đang có bao gồm: 
 
 Sprint 1:
 Planning, Review, Report 
