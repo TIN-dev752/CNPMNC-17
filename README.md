@@ -3,11 +3,11 @@ Bảng điểm từng thành viên qua các sprint
 
 | Họ tên | Sprint 1 | Sprint 2 | Sprint 3 | Sprint 4 |
 |---|---|---|---|---|
-| Nguyễn Chí Thành | 9 | 10 | 8 | 0 |
-| Trần Lê Thi | 8 | 10 | 9 | 0 |
-| Nguyễn Nhựt Tân | 10 | 9 | 8 | 0 |
-| Trần Duy Thắng | 9 | 10 | 8 | 0 |
-| Lữ Trung Tín | 9 | 8 | 10 | 0 |
+| Nguyễn Chí Thành | 9 | 10 | 8 | - |
+| Trần Lê Thi | 8 | 10 | 9 | - |
+| Nguyễn Nhựt Tân | 10 | 9 | 8 | - |
+| Trần Duy Thắng | 9 | 10 | 8 | - |
+| Lữ Trung Tín | 9 | 8 | 10 | - |
 
 
 # Giới yêu cầu phần mềm của dự án
