@@ -4,17 +4,11 @@ Bảng điểm từng thành viên qua các sprint
 | Họ tên | Sprint 1 | Sprint 2 | Sprint 3 | Sprint 4 |
 |---|---|---|---|---|
 | Nguyễn Chí Thành | 9 | 10 | 8 | 0 |
-| Trần Lê Thi | 9 | 10 | 8 | 0 |
-| Nguyễn Nhựt Tân | 9 | 10 | 8 | 0 |
+| Trần Lê Thi | 8 | 10 | 9 | 0 |
+| Nguyễn Nhựt Tân | 10 | 9 | 8 | 0 |
 | Trần Duy Thắng | 9 | 10 | 8 | 0 |
-| Lữ Trung Tín | 9 | 10 | 8 | 0 |
-Trần Lê Thi - 22DH113444
+| Lữ Trung Tín | 9 | 8 | 10 | 0 |
 
-Nguyễn Nhựt Tân - 22DH113254
-
-Trần Duy Thắng - 22DH113408
-
-Lữ Trung Tín - 22DH113752
 
 # Giới yêu cầu phần mềm của dự án
 
