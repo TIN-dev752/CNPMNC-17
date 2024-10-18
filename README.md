@@ -15,6 +15,7 @@ Bảng điểm từng thành viên qua các sprint:
  <mark>Từ khóa được tìm kiếm</mark>
  <small>Văn bản kích thước nhỏ</small>
  <big>Văn bản kích thước lớn</big>
+ 
 <b><del> • Giới yêu cầu phần mềm của dự án </del></b>
 
 Đây là link mô tả yêu cầu phần mềm của dự án nhóm chúng em: [Nhom17_Word](https://docs.google.com/document/d/1uN3Sz8XgEv7DOM15Pij1ZkM7GRmbQeCq/edit)
