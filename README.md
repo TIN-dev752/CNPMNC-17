@@ -1,5 +1,5 @@
 # CNPMNC-Nhóm17
-Bảng điểm từng thành viên qua các sprint
+Bảng điểm từng thành viên qua các sprint:
 
 | Họ tên | Sprint 1 | Sprint 2 | Sprint 3 | Sprint 4 |
 |---|---|---|---|---|
