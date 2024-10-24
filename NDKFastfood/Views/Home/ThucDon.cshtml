@@ -1,0 +1,8 @@
+﻿@model IEnumerable<NDKFastfood.Models.Loai>
+    <ul>
+        @foreach (var item in Model)
+            {
+                <li><a href="@Url.Action("MATheothucdon", "Shop", new {id = item.MaLoai })">@item.TenLoai</a></li>
+            }
+    </ul>
+  

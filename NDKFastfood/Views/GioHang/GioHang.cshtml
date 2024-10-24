@@ -1,0 +1,114 @@
+﻿@using NDKFastfood.Models
+@model List<GioHang>
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Hero Section End -->
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-section set-bg" data-setbg="/Assets/Images/breadcrumb.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb__text">
+                    <h2>Giỏ hàng</h2>
+                    <div class="breadcrumb__option">
+                        <a href="@Url.Action("Index", "Home")">Trang chủ</a>
+                        <span>Giỏ hàng</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+<!-- Shoping Cart Section Begin -->
+<section class="shoping-cart spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="shoping__cart__table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="shoping__product">Món ăn</th>
+                                <th>Đơn giá</th>
+                                <th>Số lượng</th>
+                                <th>Tổng</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+                                <td class="shoping__cart__item">
+                                    <img src="@Url.Content("~/Assets/Images/"+item.sAnhDD)" alt="" style="width:45%">
+                                    <h5>@item.sTenMon</h5>
+                                </td>
+
+                                @using (Html.BeginForm("CapNhatGioHang", "GioHang", new { @iMaMon = item.iMaMon }))
+                                {
+                                    <td class="shoping__cart__price">
+                                        @item.dGiaBan
+                                    </td>
+                                    <td class="shoping__cart__quantity">
+                                        <div class="quantity">
+                                            <div class="pro-qty">
+                                                <input name="txtSoLuong" type="text" value="@item.iSoLuong">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="shoping__cart__total">
+                                        @String.Format("{0:0,0}", item.dThanhTien)
+                                    </td>
+                                    <td class="shoping__cart__item__close">
+                                        <a style="font-size:20px;color:black" href="@Url.Action("XoaGioHang","GioHang", new { @iMaMon = item.iMaMon })"><i class="fa fa-trash"> Xóa</i></a>
+                                        <br />
+                                        <br />
+                                       <input type="submit" value="Cập nhật" />
+                                    </td>
+                                }
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="shoping__cart__btns">
+                    <a href="@Url.Action("Index","Shop")" class="primary-btn cart-btn">Tiếp tục đặt món</a>
+                    <a href="@Url.Action("XoaTatCaGioHang","GioHang")" class="primary-btn cart-btn cart-btn-right">
+                        <span class="fa fa-remove"></span>
+                        Xóa giỏ hàng
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="shoping__continue">
+                    <div class="shoping__discount">
+                        <h5>Phiếu giảm giá</h5>
+                        <form action="#">
+                            <input type="text" placeholder="Điền phiếu giảm giá">
+                            <button type="submit" class="site-btn">Áp dụng</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="shoping__checkout">
+                    <h5>Hóa đơn</h5>
+                    <ul>
+                        <li>Giảm giá <span>0 vnđ</span></li>
+                        <li>Thành tiền <span>@String.Format("{0:0,0}", ViewBag.TongTien) vnđ</span></li>
+                    </ul>
+                    <a href="@Url.Action("DatHang","GioHang")" class="primary-btn">THANH TOÁN</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Shoping Cart Section End -->

@@ -1,0 +1,81 @@
+﻿@model IEnumerable<NDKFastfood.Models.MonAn>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="hero">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="hero__categories">
+                    <div class="hero__categories__all">
+                        <i class="fa fa-bars"></i>
+                        <span>Thực đơn</span>
+                    </div>
+                    @Html.Action("ThucDon", "Home")
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="hero__item set-bg" data-setbg="/Assets/Images/bannerpizza.jpg" style="width:100%">
+                    <div class="hero__text">
+                        <span>The Ultimate</span>
+                        <h2>Big <br />Pizza</h2>
+                        <p>Chỉ 89.000 vnđ</p>
+                        <a href="@Url.Action("Index", "Shop")" class="primary-btn">ĐẶT MÓN NGAY</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Hero Section End -->
+<!-- Categories Section Begin -->
+<section class="categories">
+    <div class="container">
+        <div class="row">
+            <div class="categories__slider owl-carousel">
+                @foreach (var monan in Model)
+                {
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-setbg="@Url.Content("~/Assets/Images/"+monan.AnhDD)">
+                            <h5><a href="@Url.Action("Details","Shop", new { id = monan.MaMon})">@monan.TenMon</a></h5>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Categories Section End -->
+<!-- Featured Section Begin -->
+<section class="featured spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>Món ăn nổi bật</h2>
+                </div>              
+            </div>
+        </div>
+        <div class="row featured__filter">
+            @foreach (var monan in Model)
+            {
+                <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
+                    <div class="featured__item">
+                        <div class="featured__item__pic set-bg" data-setbg="@Url.Content("~/Assets/Images/"+monan.AnhDD)">
+                            <ul class="featured__item__pic__hover">
+                                <li><a href="@Url.Action("Details","Shop", new { id = monan.MaMon})"><i class="fa fa-eye"></i></a></li>
+                                <li><a href="@Url.Action("ThemGioHang", "GioHang", new { @iMaMon = monan.MaMon, @strURL = Request.Url.ToString() })"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="featured__item__text">
+                            <h6><a href="#">@monan.TenMon</a></h6>
+                            <h5>@monan.GiaBan</h5>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

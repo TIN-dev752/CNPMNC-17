@@ -1,0 +1,194 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trang chủ</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="/Assets/Client/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/Assets/Client/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/Assets/Client/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="/Assets/Client/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="/Assets/Client/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="/Assets/Client/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="/Assets/Client/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="/Assets/Client/css/style.css" type="text/css">
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+    <!-- Humberger End -->
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="header__top__left">
+                            <ul>
+                                <li><i class="fa fa-envelope"></i> kiwi@gmail.com</li>
+                                <li>Chào mừng, quý khách đã đến với hệ thống của chúng tôi</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="header__top__right">
+                            <div class="header__top__right__social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                                <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                            </div>
+                            <div class="header__top__right__language">
+                                <img src="img/language.png" alt="">
+                                <div>Tiếng Việt</div>
+                                <span class="arrow_carrot-down"></span>
+                                <ul>
+                                    <li><a href="#">Tiếng Việt</a></li>
+                                    <li><a href="#">Tiếng Anh</a></li>
+                                </ul>
+                            </div>
+                            @if (Session["TaiKhoan"] == null)
+                            {
+                                <div class="header__top__right__auth">
+                                    <a href="@Url.Action("DangNhap","NguoiDung")"><i class="fa fa-user"></i>Đăng nhập</a>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="header__top__right__logout">
+                                    <a href="@Url.Action("DangXuat", "NguoiDung")"><i class="material-icons">logout</i>Đăng xuất</a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="header__logo">
+                        <a href="@Url.Action("Index","Home")"><img src="~/Assets/Images/Kiwi'sFastfood.png" alt="" style="height:50px;width:119px"></a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <nav class="header__menu">
+                        <ul>
+                            <li class="active"><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
+                            <li><a href="@Url.Action("Index","Shop")">Thực đơn</a></li>
+                            <li><a href="@Url.Action("Index","Contact")">Liên hệ</a></li>
+                            <li>
+                                @if (Session["TaiKhoan"] == null)
+                                {
+                                    <a href="#">Tài khoản</a>
+                                    <ul class="header__menu__dropdown">
+                                        <li><a href="@Url.Action("DangKy","NguoiDung")">Đăng ký</a></li>
+                                        <li><a href="@Url.Action("DangNhap","NguoiDung")">Đăng nhập</a></li>
+                                    </ul>
+                                }
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3">
+                    @Html.Action("GioHangPartial", "GioHang")
+                </div>
+            </div>
+            <div class="humberger__open">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    <!-- Header Section End -->
+    <!-- Hero Section Begin -->
+    @RenderBody()
+    <!-- Footer Section Begin -->
+    <footer class="footer spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer__about">
+                        <div class="footer__about__logo">
+                            <a href="@Url.Action("Index","Home")"><img src="~/Assets/Images/Kiwi'sFastfood.png" alt="" style="height:50px;width:119px"></a>
+                        </div>
+                        <ul>
+                            <li>Địa chỉ: 828 Đ.Sư Vạn Hạnh, P12, Q10, TP.HCM</li>
+                            <li>Điện thoại: 0814 250 252</li>
+                            <li>Email: kiwi@gmail.com</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
+                    <div class="footer__widget">
+                        <h6>Liên kết</h6>
+                        <ul>
+                            <li><a href="#">Về chúng tôi</a></li>
+                            <li><a href="#">Về Kiwi's fastfood</a></li>
+                            <li><a href="#">Đặt món tiện lợi</a></li>
+                            <li><a href="#">Thông tin giao hàng</a></li>
+                            <li><a href="#">Chính sách bảo mật</a></li>
+                            <li><a href="#">Điều khoản</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#">Sứ mệnh</a></li>
+                            <li><a href="#">Dịch vụ</a></li>
+                            <li><a href="#">Món ăn</a></li>
+                            <li><a href="#">Liên hệ</a></li>
+                            <li><a href="#">Sự đổi mới</a></li>
+                            <li><a href="#">Chứng thực</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="footer__widget">
+                        <h6>Cập nhật thông tin mới nhất về Kiwi's fastfood</h6>
+                        <p>Nhận thông tin mới nhất qua email về cửa hàng và những ưu đãi đặc biệt.</p>
+                        <form action="#">
+                            <input type="text" placeholder="Điền email vào đây">
+                            <button type="submit" class="site-btn">Đăng ký</button>
+                        </form>
+                        <div class="footer__widget__social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-pinterest"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+    <!-- Js Plugins -->
+    <script src="/Assets/Client/js/jquery-3.3.1.min.js"></script>
+    <script src="/Assets/Client/js/bootstrap.min.js"></script>
+    <script src="/Assets/Client/js/jquery.nice-select.min.js"></script>
+    <script src="/Assets/Client/js/jquery-ui.min.js"></script>
+    <script src="/Assets/Client/js/jquery.slicknav.js"></script>
+    <script src="/Assets/Client/js/mixitup.min.js"></script>
+    <script src="/Assets/Client/js/owl.carousel.min.js"></script>
+    <script src="/Assets/Client/js/main.js"></script>
+
+
+
+</body>
+
+</html>

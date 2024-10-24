@@ -1,0 +1,123 @@
+﻿@model NDKFastfood.Models.NhanVien
+@{
+    ViewBag.Title = "SuaNV";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align: center; font-weight: bold; margin-bottom: 30px;">Điều chỉnh thông tin nhân viên</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <br />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.MaNV)
+        <div class="form-group">
+            <div class="row" style="width:100%">
+                <div class="col-md-6">
+                    <h5 style="font-weight:bold;padding-left:170px;padding-bottom:5px">Tên nhân viên:</h5>
+                    <div class="col-md-6" style="padding-left:170px">
+                        @Html.EditorFor(model => model.TenNV, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TenNV, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <h5 style="font-weight:bold;padding-bottom:5px;padding-left:15px">Giới tính:</h5>
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.GioiTinh, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row" style="width:100%">
+                <div class="col-md-6">
+                    <h5 style="font-weight:bold;padding-left:170px;padding-bottom:5px">Ngày sinh:</h5>
+                    <div class="col-md-6" style="padding-left:170px">
+                        @Html.EditorFor(model => model.NgaySinh, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <h5 style="font-weight:bold;padding-bottom:5px;padding-left:15px">Số điện thoại:</h5>
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row" style="width:100%">
+                <div class="col-md-6">
+                    <h5 style="font-weight:bold;padding-left:170px;padding-bottom:5px">Địa chỉ:</h5>
+                    <div class="col-md-6" style="padding-left:170px">
+                        @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <h5 style="font-weight:bold;padding-bottom:5px;padding-left:15px">Email:</h5>
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row" style="width:100%">
+                <div class="col-md-6">
+                    <h5 style="font-weight:bold;padding-left:170px;padding-bottom:5px">Chức vụ:</h5>
+                    <div class="col-md-6" style="padding-left:170px">
+                        @Html.EditorFor(model => model.ChucVu, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ChucVu, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="width:100%">
+                <div class="col-md-6">
+                    <h5 style="font-weight:bold;padding-left:170px;padding-bottom:5px">Lương:</h5>
+                    <div class="col-md-6" style="padding-left:170px">
+                        @Html.EditorFor(model => model.Luong, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Luong, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row" style="width:100%">
+                <div class="col-md-6">
+                    <h5 style="font-weight:bold;padding-left:170px;padding-bottom:5px">Ngày bắt đầu làm:</h5>
+                    <div class="col-md-6" style="padding-left:170px">
+                        @Html.EditorFor(model => model.NgayBatDauLam, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.NgayBatDauLam, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row" style="width: 100%; margin-top: 30px;">
+                <div class="col-md-6">
+                    <a style="font-weight:bold;color:black;padding-left:170px" href="@Url.Action("NhanVien", "Admin")"><i class="fa fa-arrow-left"> Trở lại</i></a>
+                </div>
+                <div class="col-md-6">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button style="font-weight: bold; color: black;padding-left:15px " type="submit"><i class="fa fa-save"> Lưu</i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+

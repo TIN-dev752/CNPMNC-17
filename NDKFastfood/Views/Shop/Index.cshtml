@@ -1,0 +1,88 @@
+﻿@using NDKFastfood.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<MonAn>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-section set-bg" data-setbg="/Assets/Images/breadcrumb.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb__text">
+                    <h2>Kiwi's Fast food</h2>
+                    <div class="breadcrumb__option">
+                        <a href="@Url.Action("Index", "Home")">Trang chủ</a>
+                        <span>Thực đơn</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+<!-- Product Section Begin -->
+<section class="product spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-5">
+                <div class="sidebar">
+                    <div class="sidebar__item">
+                        <h4>Thực đơn</h4>
+                        @Html.Action("ThucDon", "Home")
+                    </div>
+                    <div class="sidebar__item">
+                        <div class="latest-product__text">
+                            <h4>Cập nhật mới</h4>
+                            <div class="latest-product__slider owl-carousel">
+                                @foreach (var monan in Model)
+                                {
+                                    <div class="latest-prdouct__slider__item">
+                                        <a href="@Url.Action("Details","Shop", new { id = monan.MaMon})" class="latest-product__item">
+                                            <div class="latest-product__item__pic">
+                                                <img src="@Url.Content("~/Assets/Images/"+monan.AnhDD)" alt="">
+                                            </div>
+                                            <div class="latest-product__item__text">
+                                                <h6>@monan.TenMon</h6>
+                                                <span>@monan.GiaBan</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-7">
+                <div class="row">
+                    @foreach (var monan in Model)
+                    {
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg" data-setbg="@Url.Content("~/Assets/Images/"+monan.AnhDD)">
+                                    <ul class="product__item__pic__hover">
+                                        <li><a href="@Url.Action("Details","Shop", new { id = monan.MaMon})"><i class="fa fa-eye"></i></a></li>
+                                        <li><a href="@Url.Action("ThemGioHang", "GioHang", new { @iMaMon = monan.MaMon, @strURL = Request.Url.ToString() })"><i class="fa fa-shopping-cart"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="product__item__text">
+                                    <h6><a href="#">@monan.TenMon</a></h6>
+                                    <h5>@monan.GiaBan vnđ</h5>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+                @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount
+                <div class="product__pagination">
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Product Section End -->
