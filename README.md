@@ -3,11 +3,11 @@
 
 | Họ tên | Sprint 1 | Sprint 2 | Sprint 3 | Sprint 4 |
 |---|---|---|---|---|
-| Nguyễn Chí Thành | 9 | 10 | 8 | - |
-| Trần Lê Thi | 8 | 10 | 9 | - |
-| Nguyễn Nhựt Tân | 10 | 9 | 8 | - |
-| Trần Duy Thắng | 9 | 10 | 8 | - |
-| Lữ Trung Tín | 9 | 8 | 10 | - |
+| Nguyễn Chí Thành | 9 | 10 | 8 | 10 |
+| Trần Lê Thi | 8 | 10 | 9 | 10 |
+| Nguyễn Nhựt Tân | 10 | 9 | 8 | 10 |
+| Nguyễn Duy Thắng | 9 | 10 | 10 | 10 |
+| Lữ Trung Tín | 9 | 8 | 10 | 10 |
  
 <b><code> • Giới yêu cầu phần mềm của dự án </code></b>
 
@@ -28,7 +28,10 @@ Sprint 2:
 Planning, Review, Report 
 
 Sprint 3:
-Planning
+Planning, Review, Report
+
+Sprint 4:
+Planning, Review, Report
 
 <b><Code> • Thiết kế dự án </code></b>
 
