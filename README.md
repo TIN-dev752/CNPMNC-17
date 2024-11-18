@@ -6,7 +6,7 @@
 | Nguyễn Chí Thành | 9 | 10 | 8 | 10 |
 | Trần Lê Thi | 8 | 10 | 9 | 10 |
 | Nguyễn Nhựt Tân | 10 | 9 | 8 | 10 |
-| Nguyễn Duy Thắng | 9 | 10 | 10 | 10 |
+| Nguyễn Duy Thắng | 10 | 9 | 10 | 10 |
 | Lữ Trung Tín | 9 | 8 | 10 | 10 |
  
 <b><code> • Giới yêu cầu phần mềm của dự án </code></b>
