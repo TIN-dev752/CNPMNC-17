@@ -8,15 +8,11 @@ namespace NDKFastfood.Models
 {
     public class GioHang
     {
-        private dbKiwiFastfoodDataContext data;
+        private dbKiwiFastfoodDataContext data = new dbKiwiFastfoodDataContext(ConfigurationManager.ConnectionStrings["KiwiFastfoodConnectionString1"].ConnectionString);
 
-        public GioHang()
+        public GioHang(dbKiwiFastfoodDataContext context) 
         {
-            // Lấy chuỗi kết nối từ Web.config
-            string connectionString = ConfigurationManager.ConnectionStrings["KiwiFastfoodConnectionString"].ConnectionString;
-
-            // Khởi tạo đối tượng dbKiwiFastfoodDataContext với chuỗi kết nối
-            data = new dbKiwiFastfoodDataContext(connectionString);
+            data = context;
         }
         public int iMaMon { set; get; }
         public string sTenMon { set; get; }

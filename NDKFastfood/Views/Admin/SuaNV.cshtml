@@ -19,7 +19,7 @@
                 <div class="col-md-6">
                     <h5 style="font-weight:bold;padding-left:170px;padding-bottom:5px">Tên nhân viên:</h5>
                     <div class="col-md-6" style="padding-left:170px">
-                        @Html.EditorFor(model => model.TenNV, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.TenNV, new { htmlAttributes = new { @class = "form-control", maxlength = "30" } })
                         @Html.ValidationMessageFor(model => model.TenNV, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                 <div class="col-md-6">
                     <h5 style="font-weight:bold;padding-left:170px;padding-bottom:5px">Ngày sinh:</h5>
                     <div class="col-md-6" style="padding-left:170px">
-                        @Html.EditorFor(model => model.NgaySinh, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.TextBoxFor(model => model.NgaySinh, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
                         @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                     <div class="form-group">
                         <h5 style="font-weight:bold;padding-bottom:5px;padding-left:15px">Số điện thoại:</h5>
                         <div class="col-md-6">
-                            @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control", maxlength = "10", id = "DienThoaiNV" } })
                             @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                 <div class="col-md-6">
                     <h5 style="font-weight:bold;padding-left:170px;padding-bottom:5px">Địa chỉ:</h5>
                     <div class="col-md-6" style="padding-left:170px">
-                        @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control", maxlength = "100" } })
                         @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -67,7 +67,7 @@
                     <div class="form-group">
                         <h5 style="font-weight:bold;padding-bottom:5px;padding-left:15px">Email:</h5>
                         <div class="col-md-6">
-                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", type = "email" } })
                             @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -88,7 +88,7 @@
                 <div class="col-md-6">
                     <h5 style="font-weight:bold;padding-left:170px;padding-bottom:5px">Lương:</h5>
                     <div class="col-md-6" style="padding-left:170px">
-                        @Html.EditorFor(model => model.Luong, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.Luong, new { htmlAttributes = new { @class = "form-control", min = 0 } })
                         @Html.ValidationMessageFor(model => model.Luong, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -99,7 +99,7 @@
                 <div class="col-md-6">
                     <h5 style="font-weight:bold;padding-left:170px;padding-bottom:5px">Ngày bắt đầu làm:</h5>
                     <div class="col-md-6" style="padding-left:170px">
-                        @Html.EditorFor(model => model.NgayBatDauLam, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.TextBoxFor(model => model.NgayBatDauLam, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
                         @Html.ValidationMessageFor(model => model.NgayBatDauLam, "", new { @class = "text-danger" })
                     </div>
                 </div>

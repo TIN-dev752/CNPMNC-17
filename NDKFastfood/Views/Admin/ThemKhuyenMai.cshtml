@@ -1,0 +1,100 @@
+﻿@model NDKFastfood.Models.KhuyenMai
+
+@{
+    ViewBag.Title = "ThemKhuyenMai";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<h2 style="text-align:center;font-weight:bold;margin-bottom:30px;">Thêm khuyến mãi</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <div class="row" style="width:100%">
+            <div class="col-md-3">
+                <h5 style="font-weight:bold;padding-left:120px;padding-bottom:5px">Tên khuyến mãi</h5>
+                <div style="padding-left: 120px">
+                    @Html.EditorFor(model => model.TenKM, new { htmlAttributes = new { @class = "form-control", maxlength = "30", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.TenKM, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-2">
+                <h5 style="font-weight:bold;padding-left:30px;padding-bottom:5px">Phần trăm giảm giá</h5>
+                <div style="padding-left: 30px">
+                    @Html.EditorFor(model => model.PhanTramGiamGia, new { htmlAttributes = new { @class = "form-control", id = "phanTramGiamGia", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.PhanTramGiamGia, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-2">
+                <h5 style="font-weight:bold;padding-left:30px;padding-bottom:5px">Ngày bắt đầu</h5>
+                <div style="padding-left: 30px">
+                    @Html.TextBoxFor(model => model.NgayBatDau, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date", id = "ngayBatDau", min = DateTime.Now.ToString("yyyy-MM-dd"), required = "required" })
+                    @Html.ValidationMessageFor(model => model.NgayBatDau, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="row" style="width:100%;margin-top:20px;">
+            <div class="col-md-3">
+                <h5 style="font-weight:bold;padding-left:120px;padding-bottom:5px">Ngày kết thúc</h5>
+                <div style="padding-left: 120px">
+                    @Html.TextBoxFor(model => model.NgayKetThuc, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date", id = "ngayKetThuc", required = "required" })
+                    @Html.ValidationMessageFor(model => model.NgayKetThuc, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h5 style="font-weight:bold;padding-left:30px;padding-bottom:5px">Số lượng</h5>
+                <div style="padding-left: 30px">
+                    @Html.EditorFor(model => model.SoLuong, new { htmlAttributes = new { @class = "form-control", min = "1", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.SoLuong, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row" style="width:100%; margin-top:30px;">
+            <div class="col-md-3">
+                <a style="font-weight:bold;color:black;padding-left:120px" href="@Url.Action("KhuyenMai","Admin")"><i class="fa fa-arrow-left"> Trở lại</i></a>
+                <button style="font-weight: bold; color: black; margin-left: 30px" type="submit"><i class="fa fa-save"> Thêm</i></button>
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+    document.getElementById("phanTramGiamGia").addEventListener("input", function () {
+        var value = parseFloat(this.value);
+
+        if (value < 1) {
+            alert("Phần trăm giảm giá phải lớn hơn hoặc bằng 1.");
+            document.getElementById("phanTramGiamGia").value = "";
+        }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const startDateInput = document.getElementById("ngayBatDau");
+        const endDateInput = document.getElementById("ngayKetThuc");
+
+        function validateDates() {
+            // Chỉ kiểm tra khi cả hai giá trị đều hợp lệ
+            if (startDateInput.value && endDateInput.value) {
+                if (endDateInput.value < startDateInput.value) {
+                    alert("Ngày kết thúc phải lớn hơn hoặc bằng ngày bắt đầu.");
+                    endDateInput.value = ""; // Xóa giá trị không hợp lệ
+                }
+            }
+        }
+
+        startDateInput.addEventListener("input", function () {
+            if (startDateInput.value) {
+                endDateInput.setAttribute("min", startDateInput.value);
+            }
+        });
+
+        endDateInput.addEventListener("blur", function () {
+            validateDates(); // Kiểm tra tính hợp lệ khi người dùng rời khỏi ô
+        });
+    });
+</script>

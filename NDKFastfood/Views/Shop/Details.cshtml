@@ -4,6 +4,65 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<style>
+    .fixed-size {
+        width: 100%;
+        max-width: 100%;
+        height: 120px;
+        resize: none;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .fixed-size:focus {
+        outline: none;
+        border-color: #FF6600; 
+        box-shadow: 0px 2px 6px rgba(255, 102, 0, 0.5);
+    }
+
+    .comments-list {
+        max-height: 250px;
+        min-height: 120px;
+        overflow-y: auto;
+        border: 1px solid #ccc;
+        padding: 10px;
+        background-color: #f9f9f9;
+        border-radius: 5px;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .comments-list ul {
+        list-style: none; 
+        margin: 0;
+        padding: 0;
+    }
+
+    .comments-list li {
+        border-bottom: 1px solid #eee;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+    }
+
+    .comments-list li:last-child {
+        border-bottom: none; 
+    }
+
+    .comments-list strong {
+        font-weight: bold;
+        color: #FF6600; 
+    }
+
+    .comments-list p {
+        margin: 5px 0 0; 
+        font-size: 14px;
+        color: #555;
+    }
+</style>
+
 <!-- Hero Section End -->
 <!-- Breadcrumb Section Begin -->
 <section class="breadcrumb-section set-bg" data-setbg="/Assets/Images/breadcrumb.jpg">
@@ -63,8 +122,22 @@
                             </div>
                         </li>
                     </ul>
+                </div>  
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6" style="margin-top: 60px;">
+                <div class="add-comment">
+                    <p style="font-size: 20px; color: black; font-weight: bold;">Comments</p>
+                    <form method="post" action="@Url.Action("ThemDanhGia", "Shop")" style="display: flex; flex-direction: column;">
+                        <input type="hidden" name="MaMon" value="@Model.MaMon" />
+                        <textarea id="commentContent" name="commentContent" class="fixed-size" placeholder="Đưa ra cảm nhận về sản phẩm..."></textarea>
+                        <button id="btnSubmit" class="btn-primary" style="width: max-content; border: none; outline: none; background-color: #FF6600; padding: 5px;">Gửi đánh giá</button>
+                    </form>
                 </div>
             </div>
+            @Html.Action("XemDanhGia", "Shop", new { mamon = Model.MaMon })
         </div>
     </div>
 </section>
+

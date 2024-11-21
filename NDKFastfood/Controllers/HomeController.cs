@@ -5,22 +5,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using NDKFastfood.Models;
+using PagedList;
 
 namespace NDKFastfood.Controllers
 {
     public class HomeController : Controller
     {
         // GET: Home
-        private dbKiwiFastfoodDataContext data;
-
-        public HomeController()
-        {
-            // Lấy chuỗi kết nối từ Web.config
-            string connectionString = ConfigurationManager.ConnectionStrings["KiwiFastfoodConnectionString"].ConnectionString;
-
-            // Khởi tạo đối tượng dbKiwiFastfoodDataContext với chuỗi kết nối
-            data = new dbKiwiFastfoodDataContext(connectionString);
-        }
+        dbKiwiFastfoodDataContext data = new dbKiwiFastfoodDataContext(ConfigurationManager.ConnectionStrings["KiwiFastfoodConnectionString1"].ConnectionString);
         private List<MonAn> LayMonAn(int count)
         {
             return data.MonAns.OrderByDescending(a => a.MaMon).Take(count).ToList();
@@ -39,6 +31,16 @@ namespace NDKFastfood.Controllers
         {
             var monan = from ma in data.MonAns where ma.MaMon == id select ma;
             return View(monan.Single());
+        }
+        public ActionResult KhuyenMai(int? page)
+        {
+            int pageNumber = (page ?? 1);
+            int pageSize = 7;
+            var khuyenMai = data.KhuyenMais
+                         .Where(km => km.NgayKetThuc != null && km.NgayKetThuc.Date >= DateTime.Now.Date) 
+                         .OrderBy(n => n.MaKM)
+                         .ToList();
+            return View(khuyenMai.ToPagedList(pageNumber, pageSize));
         }
     }
 }

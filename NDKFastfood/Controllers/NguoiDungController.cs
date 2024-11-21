@@ -10,16 +10,7 @@ namespace NDKFastfood.Controllers
     public class NguoiDungController : Controller
     {
         // GET: NguoiDung
-        private dbKiwiFastfoodDataContext data;
-
-        public NguoiDungController()
-        {
-            // Lấy chuỗi kết nối từ Web.config
-            string connectionString = ConfigurationManager.ConnectionStrings["KiwiFastfoodConnectionString"].ConnectionString;
-
-            // Khởi tạo đối tượng dbKiwiFastfoodDataContext với chuỗi kết nối
-            data = new dbKiwiFastfoodDataContext(connectionString);
-        }
+        dbKiwiFastfoodDataContext data = new dbKiwiFastfoodDataContext(ConfigurationManager.ConnectionStrings["KiwiFastfoodConnectionString1"].ConnectionString);
         public ActionResult Index()
         {
             return View();

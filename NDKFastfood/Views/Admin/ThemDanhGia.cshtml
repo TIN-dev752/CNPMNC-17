@@ -1,0 +1,57 @@
+﻿@model NDKFastfood.Models.DanhGia
+
+@{
+    ViewBag.Title = "ThemDanhGia";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center;font-weight:bold;margin-bottom:30px;">Thêm đánh giá</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <div class="row" style="width:100%">
+            <div class="col-md-3">
+                <h5 style="font-weight:bold;padding-left:120px;padding-bottom:5px">Mã món ăn</h5>
+                <div style="padding-left: 120px">
+                    @Html.EditorFor(model => model.MaMon, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MaMon, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-3">
+                <h5 style="font-weight:bold;padding-left:30px;padding-bottom:5px">Mã khách hàng</h5>
+                <div style="padding-left: 30px">
+                    @Html.EditorFor(model => model.MaKH, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MaKH, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="row" style="width:100%;margin-top:20px;">
+            <div class="col-md-3">
+                <h5 style="font-weight:bold;padding-left:120px;padding-bottom:5px">Nội dung đánh giá</h5>
+                <div style="padding-left: 120px">
+                    @Html.EditorFor(model => model.NoiDung, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NoiDung, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-3">
+                <h5 style="font-weight:bold;padding-left:30px;padding-bottom:5px">Ngày đánh giá</h5>
+                <div style="padding-left: 30px">
+                    @Html.TextBoxFor(model => model.NgayDanhGia, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+                    @Html.ValidationMessageFor(model => model.NgayDanhGia, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row" style="width:100%; margin-top:30px;">
+            <div class="col-md-3">
+                <a style="font-weight:bold;color:black;padding-left:120px" href="@Url.Action("DangGia","Admin")"><i class="fa fa-arrow-left"> Trở lại</i></a>
+                <button style="font-weight: bold; color: black; margin-left: 30px" type="submit"><i class="fa fa-save"> Thêm</i></button>
+            </div>
+        </div>
+    </div>
+}
+

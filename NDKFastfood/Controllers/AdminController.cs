@@ -8,25 +8,18 @@ using PagedList;
 using PagedList.Mvc;
 using System.IO;
 using System.Configuration;
+using Newtonsoft.Json;
 
 namespace NDKFastfood.Controllers
 {
     public class AdminController : Controller
     {
         // GET: Admin
-        private dbKiwiFastfoodDataContext db;
+        dbKiwiFastfoodDataContext db = new dbKiwiFastfoodDataContext(ConfigurationManager.ConnectionStrings["KiwiFastfoodConnectionString1"].ConnectionString);
 
-        public AdminController()
-        {
-            // Lấy chuỗi kết nối từ Web.config
-            string connectionString = ConfigurationManager.ConnectionStrings["KiwiFastfoodConnectionString"].ConnectionString;
-
-            // Khởi tạo đối tượng dbKiwiFastfoodDataContext với chuỗi kết nối
-            db = new dbKiwiFastfoodDataContext(connectionString);
-        }
         public ActionResult Index()
         {
-            return RedirectToAction("Login","Admin");
+            return RedirectToAction("Login", "Admin");
         }
         [HttpGet]
         public ActionResult Login()
@@ -59,7 +52,9 @@ namespace NDKFastfood.Controllers
             }
             return View();
         }
-        public ActionResult MonAn(int ? page)
+
+        //Mon an
+        public ActionResult MonAn(int? page)
         {
             int pageNumber = (page ?? 1);
             int pageSize = 7;
@@ -75,30 +70,24 @@ namespace NDKFastfood.Controllers
         [ValidateInput(false)]
         public ActionResult ThemMonAn(MonAn monan, HttpPostedFileBase fileupload)
         {
-            //đưa dữ liệu vào dropdownload
             ViewBag.MaLoai = new SelectList(db.Loais.ToList().OrderBy(n => n.TenLoai), "MaLoai", "TenLoai");
             if (fileupload == null)
             {
                 ViewBag.Thongbao = "Vui lòng chọn ảnh đại diện";
                 return View();
             }
-            // thêm vào csdl
             else
             {
                 if (ModelState.IsValid)
                 {
-                    //lưu tên file , lưu ý bổ sung thư việng using System.IO
                     var filename = Path.GetFileName(fileupload.FileName);
-                    // lưu đường dẫn của file
-                    var path = Path.Combine(Server.MapPath("~/Assets/Images/"),filename);
-                    // kiểm tra hình tồn tại chưa?
+                    var path = Path.Combine(Server.MapPath("~/Assets/Images/"), filename);
                     if (System.IO.File.Exists(path))
                     {
                         ViewBag.Thongbao = "Hình ảnh đã tồn tại";
                     }
                     else
                     {
-                        // lưu hình ảnh vào  đường dẫn
                         fileupload.SaveAs(path);
                     }
                     monan.AnhDD = filename;
@@ -108,6 +97,8 @@ namespace NDKFastfood.Controllers
                 return RedirectToAction("MonAn");
             }
         }
+
+        //Chi tiet mon an
         public ActionResult ChiTietMonAn(int id)
         {
             MonAn monan = db.MonAns.SingleOrDefault(n => n.MaMon == id);
@@ -166,6 +157,8 @@ namespace NDKFastfood.Controllers
             db.SubmitChanges();
             return RedirectToAction("MonAn");
         }
+
+        //Loai
         public ActionResult Loai(int? page)
         {
             int pageNumber = (page ?? 1);
@@ -233,6 +226,8 @@ namespace NDKFastfood.Controllers
             db.SubmitChanges();
             return RedirectToAction("Loai");
         }
+
+        //Khach hang
         public ActionResult KhachHang(int? page)
         {
             int pageNumber = (page ?? 1);
@@ -294,6 +289,8 @@ namespace NDKFastfood.Controllers
             db.SubmitChanges();
             return RedirectToAction("KhachHang");
         }
+
+        //Nhan vien
         public ActionResult NhanVien(int? page)
         {
             int pageNumber = (page ?? 1);
@@ -368,6 +365,8 @@ namespace NDKFastfood.Controllers
             db.SubmitChanges();
             return RedirectToAction("NhanVien");
         }
+
+        //Don hang
         public ActionResult DonDatHang(int? page)
         {
             int pageNumber = (page ?? 1);
@@ -389,14 +388,14 @@ namespace NDKFastfood.Controllers
                 db.SubmitChanges();
             }
             else
-            itemm.TinhTrangGiaohang = ddh.TinhTrangGiaohang;
+                itemm.TinhTrangGiaohang = ddh.TinhTrangGiaohang;
             if (itemm.DaThanhToan == null)
             {
                 itemm.DaThanhToan = ddh.DaThanhToan;
                 db.SubmitChanges();
-            }    
+            }
             else
-            itemm.DaThanhToan = ddh.DaThanhToan;
+                itemm.DaThanhToan = ddh.DaThanhToan;
             db.SubmitChanges();
             return RedirectToAction("DonDatHang");
         }
@@ -435,6 +434,185 @@ namespace NDKFastfood.Controllers
             db.DonDatHangs.DeleteOnSubmit(item);
             db.SubmitChanges();
             return RedirectToAction("DonDatHang");
+        }
+
+        //Khuyen mai
+        public ActionResult KhuyenMai(int? page)
+        {
+            int pageNumber = (page ?? 1);
+            int pageSize = 7;
+            return View(db.KhuyenMais.ToList().OrderBy(n => n.MaKM).ToPagedList(pageNumber, pageSize));
+        }
+        public ActionResult ThemKhuyenMai()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult ThemKhuyenMai(KhuyenMai item)
+        {
+            db.KhuyenMais.InsertOnSubmit(item);
+            db.SubmitChanges();
+            return RedirectToAction("KhuyenMai");
+        }
+        public ActionResult XoaKM(int id)
+        {
+            KhuyenMai item = db.KhuyenMais.SingleOrDefault(n => n.MaKM == id);
+            ViewBag.MaKM = item.MaKM;
+            if (item == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(item);
+        }
+        [HttpPost, ActionName("XoaKM")]
+        public ActionResult XacNhanXoaKM(int id)
+        {
+            KhuyenMai item = db.KhuyenMais.SingleOrDefault(n => n.MaKM == id);
+            ViewBag.MaKM = item.MaKM;
+            if (item == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            db.KhuyenMais.DeleteOnSubmit(item);
+            db.SubmitChanges();
+            return RedirectToAction("KhuyenMai");
+        }
+        public ActionResult ChiTietKM(int id)
+        {
+            KhuyenMai item = db.KhuyenMais.SingleOrDefault(n => n.MaKM == id);
+            ViewBag.MaKM = item.MaKM;
+            if (item == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(item);
+        }
+        public ActionResult SuaKM(int id)
+        {
+            KhuyenMai item = db.KhuyenMais.SingleOrDefault(n => n.MaKM == id);
+            return View(item);
+        }
+        [HttpPost]
+        public ActionResult SuaKM(KhuyenMai km)
+        {
+            KhuyenMai item = db.KhuyenMais.SingleOrDefault(n => n.MaKM == km.MaKM);
+            item.TenKM = km.TenKM;
+            item.PhanTramGiamGia = km.PhanTramGiamGia;
+            item.NgayBatDau = km.NgayBatDau;
+            item.NgayKetThuc = km.NgayKetThuc;
+            item.SoLuong = km.SoLuong;
+            db.SubmitChanges();
+            return RedirectToAction("KhuyenMai");
+        }
+
+        //Danh gia
+        public ActionResult DanhGia(int? page)
+        {
+            int pageNumber = (page ?? 1);
+            int pageSize = 7;
+            return View(db.DanhGias.ToList().OrderBy(n => n.MaDG).ToPagedList(pageNumber, pageSize));
+        }
+        public ActionResult ThemDanhGia()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult ThemDanhGia(DanhGia item)
+        {
+            db.DanhGias.InsertOnSubmit(item);
+            db.SubmitChanges();
+            return RedirectToAction("DanhGia");
+        }
+        public ActionResult XoaDG(int id)
+        {
+            DanhGia item = db.DanhGias.SingleOrDefault(n => n.MaDG == id);
+            ViewBag.MaDG = item.MaDG;
+            if (item == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(item);
+        }
+        [HttpPost, ActionName("XoaDG")]
+        public ActionResult XacNhanXoaDG(int id)
+        {
+            DanhGia item = db.DanhGias.SingleOrDefault(n => n.MaDG == id);
+            ViewBag.MaDG = item.MaDG;
+            if (item == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            db.DanhGias.DeleteOnSubmit(item);
+            db.SubmitChanges();
+            return RedirectToAction("DanhGia");
+        }
+        public ActionResult ChiTietDG(int id)
+        {
+            DanhGia item = db.DanhGias.SingleOrDefault(n => n.MaDG == id);
+            ViewBag.MaDG = item.MaDG;
+            if (item == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(item);
+        }
+        public ActionResult SuaDG(int id)
+        {
+            DanhGia item = db.DanhGias.SingleOrDefault(n => n.MaDG == id);
+            return View(item);
+        }
+        [HttpPost]
+        public ActionResult SuaDG(DanhGia dg)
+        {
+            DanhGia itemm = db.DanhGias.SingleOrDefault(n => n.MaDG == dg.MaDG);
+            itemm.NoiDung = dg.NoiDung;
+            db.SubmitChanges();
+            return RedirectToAction("DanhGia");
+        }
+
+        //Thong ke doanh thu
+        public ActionResult ThongKeDoanhThu(int? month, int? year)
+        {
+            month = month ?? DateTime.Now.Month;
+            year = year ?? DateTime.Now.Year;
+
+            var doanhThu = db.DonDatHangs
+                .Where(ddh => ddh.NgayDat.HasValue && ddh.NgayDat.Value.Month == month && ddh.NgayDat.Value.Year == year && ddh.DaThanhToan == false)
+                .Join(db.ChiTietDatHangs,
+                      ddh => ddh.MaDonHang,
+                      ctdh => ctdh.MaDonHang,
+                      (ddh, ctdh) => new { ddh, ctdh })
+                .GroupBy(x => new { x.ddh.NgayDat.Value.Month, x.ddh.NgayDat.Value.Year, x.ddh.NgayDat.Value.Day })
+                .Select(g => new
+                {
+                    Ngay = g.Key.Day,
+                    TongDoanhThu = g.Sum(x => x.ctdh.SoLuong * x.ctdh.DonGia)
+                })
+                .OrderBy(x => x.Ngay)
+                .ToList();
+
+            if (doanhThu.Any())
+            {
+                ViewBag.DanhSachDoanhThu = JsonConvert.SerializeObject(doanhThu);
+                ViewBag.Thang = month;
+                ViewBag.Nam = year;
+            }
+            else
+            {
+                ViewBag.DanhSachDoanhThu = "[]"; 
+                ViewBag.Thang = month;
+                ViewBag.Nam = year;
+            }
+
+            return View();
         }
     }
 }

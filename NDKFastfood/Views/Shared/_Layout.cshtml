@@ -19,6 +19,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Css Styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="/Assets/Client/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="/Assets/Client/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="/Assets/Client/css/elegant-icons.css" type="text/css">
@@ -94,6 +95,7 @@
                         <ul>
                             <li class="active"><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
                             <li><a href="@Url.Action("Index","Shop")">Thực đơn</a></li>
+                            <li><a href="@Url.Action("KhuyenMai","Home")">Voucher</a></li>
                             <li><a href="@Url.Action("Index","Contact")">Liên hệ</a></li>
                             <li>
                                 @if (Session["TaiKhoan"] == null)

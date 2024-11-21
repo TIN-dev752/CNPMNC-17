@@ -1,0 +1,55 @@
+﻿@using NDKFastfood.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<NDKFastfood.Models.KhuyenMai>
+@{
+    ViewBag.Title = "KhuyenMai";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    p {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+</style>
+<div class="container">
+    <div class="row" style="padding: 15px 0;">
+        @if (!Model.Any())
+        {
+            <p>Hiện tại không có khuyến mãi nào.</p>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+                <div class="col-lg-3 col-md-4 col-sm-6" style="margin-bottom: 20px;">
+                    <div class="voucher" style="border: 2px solid #EEEFF0; padding: 10px 8px;">
+                        <img src="/Assets/Images/voucher.png" style="border-radius: 6px" />
+                        <p style="margin-top: 10px; font-size: 14px;">Thời gian khuyến mãi</p>
+                        <div class="voucher-date" style="display: flex; margin-top: -10px;">
+                            <p class="voucher_start" style="color: black; font-weight: 500; font-size: 16px;">
+                                @item.NgayBatDau.ToString("dd/MM/yyyy")
+                            </p>
+                            <p style="margin: 0 5px">-</p>
+                            <p class="voucher_end" style="color: black; font-weight: 500; font-size: 16px;">
+                                @item.NgayKetThuc.ToString("dd/MM/yyyy")
+                            </p>
+                        </div>
+                        <p class="voucher_name" style="color: black; font-weight: bold; font-size: 16px; margin-top: -10px;">@item.TenKM</p>
+                        <p class="voucher_discount" style="margin-top: -10px; font-size: 14px;">Phần trăm giảm giá: @item.PhanTramGiamGia %</p>
+                        <p class="voucher_quantity" style="margin-top: -10px; font-size: 14px;">Số lượng còn lại: @item.SoLuong</p>
+                        <div class="voucher-code" style="padding: 10px 10px; display: flex; justify-content: space-between; border: 1px dashed #7b8388; border-radius: 8px;">
+                            <p style="margin: 0; font-size: 14px;" class="voucher_name">Mã voucher: @item.MaKM</p>
+                            <p style="margin: 0; font-size: 16px; color: orangered;">Sao chép</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+    <div style="font-size:20px;padding-bottom:20px;font-weight:bold">
+        @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount
+        <div class="product__pagination">
+            @Html.PagedListPager(Model, page => Url.Action("KhuyenMai", new { page = page }))
+        </div>
+    </div>
+</div>
+

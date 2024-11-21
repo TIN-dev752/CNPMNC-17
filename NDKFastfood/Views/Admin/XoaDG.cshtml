@@ -1,0 +1,63 @@
+﻿@model NDKFastfood.Models.DanhGia
+@{
+    ViewBag.Title = "XoaDG";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align: center; font-weight: bold; margin-bottom: 30px;">Xóa đánh giá về sản phẩm</h2>
+
+<div style="padding-left:70px">
+    <dl class="dl-horizontal">
+        <dt>
+            Mã đánh giá:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaDG)
+        </dd>
+
+        <dt>
+            Mã món ăn:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaMon)
+        </dd>
+
+        <dt>
+            Mã khách hàng:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaKH)
+        </dd>
+
+        <dt>
+            Nội dung đánh giá:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoiDung)
+        </dd>
+
+        <dt>
+            Ngày đánh giá:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDanhGia)
+        </dd>
+    </dl>
+</div>
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <a style="font-weight:bold;color:black;padding-left:70px" href="@Url.Action("DanhGia","Admin")"><i class="fa fa-arrow-left"> Trở lại</i></a>
+            <button style="font-weight: bold; color: black; margin-left: 30px; " type="submit"><i class="fa fa-trash"> Xóa</i></button>
+        </div>
+    }
+</div>
+

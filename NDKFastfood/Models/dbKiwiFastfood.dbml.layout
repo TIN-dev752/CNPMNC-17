@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.625" name="dbKiwiFastfood">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 9.125" name="dbKiwiFastfood">
   <DataContextMoniker Name="/dbKiwiFastfoodDataContext" />
   <nestedChildShapes>
     <classShape Id="0e433ddd-b893-4d5e-9ebe-376188060a1c" absoluteBounds="6.75, 3.75, 2, 1.3862939453125005">
@@ -14,16 +14,10 @@
         <elementListCompartment Id="97c46eb9-11cf-4275-b088-a2d4e9e47240" absoluteBounds="6.265, 1.71, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="d6999966-9044-4021-9d0a-7f11fdbb755f" absoluteBounds="3.5, 5, 2, 1.9631982421875005">
-      <DataClassMoniker Name="/dbKiwiFastfoodDataContext/DonDatHang" />
-      <nestedChildShapes>
-        <elementListCompartment Id="459f1989-41f3-425c-82d2-6d3bb3590cce" absoluteBounds="3.515, 5.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="4a0e6476-7934-4373-8071-684e560aa205" absoluteBounds="0.75, 4.875, 2, 2.3478011067708344">
+    <classShape Id="4a0e6476-7934-4373-8071-684e560aa205" absoluteBounds="0.75, 5.125, 2, 2.3478011067708344">
       <DataClassMoniker Name="/dbKiwiFastfoodDataContext/KhachHang" />
       <nestedChildShapes>
-        <elementListCompartment Id="ba0c7eac-3b7a-4cab-a85f-4793980e4efe" absoluteBounds="0.765, 5.335, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="ba0c7eac-3b7a-4cab-a85f-4793980e4efe" absoluteBounds="0.765, 5.585, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="8285d7e7-015a-4768-bb73-bc8767eb9f1d" absoluteBounds="0.75, 1.375, 2, 1.1939925130208335">
@@ -38,20 +32,6 @@
         <elementListCompartment Id="b25a6e1b-2966-4d85-9d7e-8223168250be" absoluteBounds="3.515, 1.335, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(5.5 : 6.08099609375); (6.46875 : 6.08099609375); (6.46875 : 2.82859537760417)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/dbKiwiFastfoodDataContext/DonDatHang/DonDatHang_ChiTietDatHang" />
-      <nodes>
-        <classShapeMoniker Id="d6999966-9044-4021-9d0a-7f11fdbb755f" />
-        <classShapeMoniker Id="01cc837a-4c5b-42dd-a4a3-dc56c88a8a99" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 5.98159912109375); (3.5 : 5.98159912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/dbKiwiFastfoodDataContext/KhachHang/KhachHang_DonDatHang" />
-      <nodes>
-        <classShapeMoniker Id="4a0e6476-7934-4373-8071-684e560aa205" />
-        <classShapeMoniker Id="d6999966-9044-4021-9d0a-7f11fdbb755f" />
-      </nodes>
-    </associationConnector>
     <associationConnector edgePoints="[(5.5 : 2.03929768880208); (6.25 : 2.03929768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbKiwiFastfoodDataContext/MonAn/MonAn_ChiTietDatHang" />
       <nodes>
@@ -72,5 +52,58 @@
         <elementListCompartment Id="8bc8cd43-26ea-4f13-ae06-79753db51697" absoluteBounds="8.14, 6.085, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="ad822731-4e10-4528-9daa-615121af98f3" absoluteBounds="3.625, 4, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/dbKiwiFastfoodDataContext/DonDatHang" />
+      <nestedChildShapes>
+        <elementListCompartment Id="53d9f2cc-c378-4823-8cd2-df72b6ea0f4f" absoluteBounds="3.6399999999999997, 4.46, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.625 : 5.38064697265625); (6.46875 : 5.38064697265625); (6.46875 : 2.82859537760417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbKiwiFastfoodDataContext/DonDatHang/DonDatHang_ChiTietDatHang" />
+      <nodes>
+        <classShapeMoniker Id="ad822731-4e10-4528-9daa-615121af98f3" />
+        <classShapeMoniker Id="01cc837a-4c5b-42dd-a4a3-dc56c88a8a99" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 5.64024983723958); (3.625 : 5.64024983723958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbKiwiFastfoodDataContext/KhachHang/KhachHang_DonDatHang" />
+      <nodes>
+        <classShapeMoniker Id="4a0e6476-7934-4373-8071-684e560aa205" />
+        <classShapeMoniker Id="ad822731-4e10-4528-9daa-615121af98f3" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="8e9e0941-daeb-4ae5-b3c5-155650231578" absoluteBounds="3.625, 6.875, 2, 1.9631982421875">
+      <DataClassMoniker Name="/dbKiwiFastfoodDataContext/KhuyenMai" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e521acbc-b47b-4965-a0b3-9fc67b964e9a" absoluteBounds="3.6399999999999997, 7.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.625 : 6.875); (4.625 : 6.15549967447917)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/dbKiwiFastfoodDataContext/KhuyenMai/KhuyenMai_DonDatHang" />
+      <nodes>
+        <classShapeMoniker Id="8e9e0941-daeb-4ae5-b3c5-155650231578" />
+        <classShapeMoniker Id="ad822731-4e10-4528-9daa-615121af98f3" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="f0769510-aa05-4f6f-bb7f-4045c6080fff" absoluteBounds="0.75, 3, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/dbKiwiFastfoodDataContext/DanhGia" />
+      <nestedChildShapes>
+        <elementListCompartment Id="557cac36-2940-4b04-a95f-899ce458df88" absoluteBounds="0.76499999999999968, 3.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.75 : 5.125); (1.75 : 4.77089680989583)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbKiwiFastfoodDataContext/KhachHang/KhachHang_DanhGia" />
+      <nodes>
+        <classShapeMoniker Id="4a0e6476-7934-4373-8071-684e560aa205" />
+        <classShapeMoniker Id="f0769510-aa05-4f6f-bb7f-4045c6080fff" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.53125 : 3.03049967447917); (3.53125 : 3.48400033723958); (2.75 : 3.48400033723958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbKiwiFastfoodDataContext/MonAn/MonAn_DanhGia" />
+      <nodes>
+        <classShapeMoniker Id="7e3df40d-0a5d-4465-a460-dcb770ab4209" />
+        <classShapeMoniker Id="f0769510-aa05-4f6f-bb7f-4045c6080fff" />
+      </nodes>
+    </associationConnector>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

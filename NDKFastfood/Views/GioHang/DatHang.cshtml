@@ -64,6 +64,7 @@
 <br />
             @{
                 KhachHang kh = (KhachHang)Session["TaiKhoan"];
+                string currentDate = DateTime.Now.ToString("yyyy-MM-dd");
             }
             <table align="center" border="2" cellpadding="10">
                 @using (Html.BeginForm())
@@ -88,7 +89,7 @@
                     <tr style="height:40px">
                         <td>Ngày giao:</td>
                         <td style="font-weight:bold">
-                            <input type="date" name="Ngaygiao" />
+                            <input type="date" name="Ngaygiao" min="@currentDate" id="Ngaygiao" required />
                         </td>
                     </tr>
                     <tr style="height:40px">
@@ -100,3 +101,4 @@
                 }
             </table>
 <br />
+

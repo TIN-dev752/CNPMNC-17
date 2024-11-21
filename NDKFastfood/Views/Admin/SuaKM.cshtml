@@ -1,0 +1,116 @@
+﻿@model NDKFastfood.Models.KhuyenMai
+@{
+    ViewBag.Title = "SuaKM";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align: center; font-weight: bold; margin-bottom: 30px;">Điều chỉnh thông tin khuyến mãi</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <br />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.MaKM)
+        <div class="form-group">
+            <div class="row" style="width:100%">
+                <div class="col-md-6">
+                    <h5 style="font-weight:bold;padding-left:170px;padding-bottom:5px">Tên khuyến mãi:</h5>
+                    <div class="col-md-6" style="padding-left:170px">
+                        @Html.EditorFor(model => model.TenKM, new { htmlAttributes = new { @class = "form-control", maxlength = "30" } })
+                        @Html.ValidationMessageFor(model => model.TenKM, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <h5 style="font-weight:bold;padding-bottom:5px;padding-left:15px">Phần trăm giảm giá:</h5>
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.PhanTramGiamGia, new { htmlAttributes = new { @class = "form-control", min = "1" } })
+                            @Html.ValidationMessageFor(model => model.PhanTramGiamGia, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row" style="width:100%">
+                <div class="col-md-6">
+                    <h5 style="font-weight:bold;padding-left:170px;padding-bottom:5px">Ngày bắt đầu:</h5>
+                    <div class="col-md-6" style="padding-left:170px">
+                        @Html.TextBoxFor(model => model.NgayBatDau, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date", id = "ngayBatDau", min = DateTime.Now.ToString("yyyy-MM-dd") })
+                        @Html.ValidationMessageFor(model => model.NgayBatDau, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <h5 style="font-weight:bold;padding-bottom:5px;padding-left:15px">Ngày kết thúc:</h5>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(model => model.NgayKetThuc, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date", id = "ngayKetThuc" })
+                            @Html.ValidationMessageFor(model => model.NgayKetThuc, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row" style="width:100%">
+                <div class="col-md-6">
+                    <h5 style="font-weight:bold;padding-left:170px;padding-bottom:5px">Số lượng:</h5>
+                    <div class="col-md-6" style="padding-left:170px">
+                        @Html.EditorFor(model => model.SoLuong, new { htmlAttributes = new { @class = "form-control", min = "1" } })
+                        @Html.ValidationMessageFor(model => model.SoLuong, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row" style="width: 100%; margin-top: 30px;">
+                <div class="col-md-6">
+                    <a style="font-weight:bold;color:black;padding-left:170px" href="@Url.Action("KhuyenMai", "Admin")"><i class="fa fa-arrow-left"> Trở lại</i></a>
+                </div>
+                <div class="col-md-6">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button style="font-weight: bold; color: black;padding-left:15px " type="submit"><i class="fa fa-save"> Lưu</i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+    document.getElementById("phanTramGiamGia").addEventListener("input", function () {
+        var value = parseFloat(this.value);
+
+        if (value < 1) {
+            alert("Phần trăm giảm giá phải lớn hơn hoặc bằng 1.");
+            document.getElementById("phanTramGiamGia").value = "";
+        }
+    });
+
+    document.getElementById("ngayBatDau").addEventListener("change", function () {
+        var startDate = document.getElementById("ngayBatDau").value;
+        var endDate = document.getElementById("ngayKetThuc").value;
+
+        if (startDate) {
+            document.getElementById("ngayKetThuc").setAttribute("min", startDate);
+        }
+
+        if (endDate && endDate <= startDate) {
+            alert("Ngày kết thúc phải sau ngày bắt đầu.");
+            document.getElementById("ngayKetThuc").value = "";
+        }
+    });
+
+    document.getElementById("ngayKetThuc").addEventListener("change", function () {
+        var startDate = document.getElementById("ngayBatDau").value;
+        var endDate = document.getElementById("ngayKetThuc").value;
+
+        if (endDate && endDate <= startDate) {
+            alert("Ngày kết thúc phải sau ngày bắt đầu.");
+            document.getElementById("ngayKetThuc").value = "";
+        }
+    });
+</script>

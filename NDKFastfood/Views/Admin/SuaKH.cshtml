@@ -7,96 +7,106 @@
 
 <h2 style="text-align: center; font-weight: bold; margin-bottom: 30px;">Điều chỉnh thông tin khách hàng</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("SuaKH", "Admin", FormMethod.Post, new { @onsubmit = "return validateForm();" }))
 {
     @Html.AntiForgeryToken()
 
-<div class="form-horizontal">
-    <br />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.MaKH)
-    <div class="form-group">
-        <div class="row" style="width:100%">
-            <div class="col-md-6">
-                <h5 style="font-weight:bold;padding-left:170px;padding-bottom:5px">Họ tên:</h5>
-                <div class="col-md-6" style="padding-left:170px">
-                    @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
-                </div>
+    <div class="form-horizontal">
+        <br />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.MaKH)
+        <div class="form-group">
+            <h5 style="font-weight:bold;padding-left:170px;padding-bottom:5px">Họ tên:</h5>
+            <div class="col-md-6" style="padding-left:170px">
+                @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control", maxlength = "30", id = "HoTen" } })
+                @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
             </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <h5 style="font-weight:bold;padding-bottom:5px;padding-left:15px">Địa chỉ:</h5>
-                    <div class="col-md-6">
-                        @Html.EditorFor(model => model.DiaChiKH, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.DiaChiKH, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <h5 style="font-weight:bold;padding-left:170px;padding-bottom:5px">Tài khoản:</h5>
+            <div class="col-md-6" style="padding-left:170px">
+                @Html.EditorFor(model => model.TaiKhoan, new { htmlAttributes = new { @class = "form-control", minlength = "8", maxlength = "30", id = "TaiKhoan" } })
+                @Html.ValidationMessageFor(model => model.TaiKhoan, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <h5 style="font-weight:bold;padding-left:170px;padding-bottom:5px">Mật khẩu:</h5>
+            <div class="col-md-6" style="padding-left:170px">
+                @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control", minlength = "8", maxlength = "70", id = "MatKhau" } })
+                @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <h5 style="font-weight:bold;padding-left:170px;padding-bottom:5px">Xác nhận mật khẩu:</h5>
+            <div class="col-md-6" style="padding-left:170px">
+                <input type="password" class="form-control" id="ConfirmMatKhau" />
+                <span class="text-danger" id="MatKhauError"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <h5 style="font-weight:bold;padding-left:170px;padding-bottom:5px">Địa chỉ:</h5>
+            <div class="col-md-6" style="padding-left:170px">
+                @Html.EditorFor(model => model.DiaChiKH, new { htmlAttributes = new { @class = "form-control", maxlength = "100", id = "DiaChiKH" } })
+                @Html.ValidationMessageFor(model => model.DiaChiKH, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <h5 style="font-weight:bold;padding-left:170px;padding-bottom:5px">Email:</h5>
+            <div class="col-md-6" style="padding-left:170px">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", type = "email", id = "Email" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <h5 style="font-weight:bold;padding-left:170px;padding-bottom:5px">Điện thoại:</h5>
+            <div class="col-md-6" style="padding-left:170px">
+                @Html.EditorFor(model => model.DienThoaiKH, new { htmlAttributes = new { @class = "form-control", maxlength = "10", id = "DienThoaiKH" } })
+                @Html.ValidationMessageFor(model => model.DienThoaiKH, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <h5 style="font-weight:bold;padding-left:170px;padding-bottom:5px">Ngày sinh:</h5>
+            <div class="col-md-6" style="padding-left:170px">
+                @Html.TextBoxFor(model => model.NgaySinh, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date", id = "NgaySinh" })
+                @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row" style="width: 100%; margin-top: 30px;">
+                <div class="col-md-6">
+                    <a style="font-weight:bold;color:black;padding-left:170px" href="@Url.Action("KhachHang", "Admin")"><i class="fa fa-arrow-left"> Trở lại</i></a>
+                </div>
+                <div class="col-md-6">
+                    <div class="col-md-offset-2 col-md-10" style="margin-bottom: 20px;">
+                        <button style="font-weight: bold; color: black; padding-left:15px; margin-left: -95px;" type="submit"><i class="fa fa-save"> Lưu</i></button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="form-group">
-        <div class="row" style="width:100%">
-            <div class="col-md-6">
-                <h5 style="font-weight:bold;padding-left:170px;padding-bottom:5px">Tài khoản:</h5>
-                <div class="col-md-6" style="padding-left:170px">
-                    @Html.EditorFor(model => model.TaiKhoan, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.TaiKhoan, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <h5 style="font-weight:bold;padding-bottom:5px;padding-left:15px">Mật khẩu:</h5>
-                    <div class="col-md-6">
-                        @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="row" style="width:100%">
-            <div class="col-md-6">
-                <h5 style="font-weight:bold;padding-left:170px;padding-bottom:5px">Email:</h5>
-                <div class="col-md-6" style="padding-left:170px">
-                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <h5 style="font-weight:bold;padding-bottom:5px;padding-left:15px">Điện thoại:</h5>
-                    <div class="col-md-6">
-                        @Html.EditorFor(model => model.DienThoaiKH, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.DienThoaiKH, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="row" style="width:100%">
-            <div class="col-md-6">
-                <h5 style="font-weight:bold;padding-left:170px;padding-bottom:5px">Ngày sinh:</h5>
-                <div class="col-md-6" style="padding-left:170px">
-                    @Html.EditorFor(model => model.NgaySinh, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="row" style="width: 100%; margin-top: 30px;">
-            <div class="col-md-6">
-                <a style="font-weight:bold;color:black;padding-left:170px" href="@Url.Action("KhachHang", "Admin")"><i class="fa fa-arrow-left"> Trở lại</i></a>
-            </div>
-            <div class="col-md-6">
-                <div class="col-md-offset-2 col-md-10">
-                    <button style="font-weight: bold; color: black;padding-left:15px " type="submit"><i class="fa fa-save"> Lưu</i></button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 }
+
+<script>
+    function validateForm() {
+        var hoTen = document.getElementById("HoTen").value;
+        var taiKhoan = document.getElementById("TaiKhoan").value;
+        var matKhau = document.getElementById("MatKhau").value;
+        var confirmMatKhau = document.getElementById("ConfirmMatKhau").value;
+        var diaChi = document.getElementById("DiaChiKH").value;
+        var email = document.getElementById("Email").value;
+        var dienThoai = document.getElementById("DienThoaiKH").value;
+
+        if (matKhau !== confirmMatKhau) {
+            document.getElementById("MatKhauError").innerText = "Mật khẩu và xác nhận mật khẩu không khớp.";
+            return false;
+        }
+
+        var regexPhone = /^\d{10}$/;
+        if (!dienThoai.match(regexPhone)) {
+            alert("Số điện thoại phải gồm 10 chữ số.");
+            return false;
+        }
+
+        return true;
+    }
+</script>

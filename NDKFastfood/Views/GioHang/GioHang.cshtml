@@ -91,10 +91,11 @@
                 <div class="shoping__continue">
                     <div class="shoping__discount">
                         <h5>Phiếu giảm giá</h5>
-                        <form action="#">
-                            <input type="text" placeholder="Điền phiếu giảm giá">
+                        @using (Html.BeginForm("ApDungMaGiamGia", "GioHang", FormMethod.Post))
+                        {
+                            <input type="text" name="txtMaGiamGia" placeholder="Điền phiếu giảm giá" />
                             <button type="submit" class="site-btn">Áp dụng</button>
-                        </form>
+                        }
                     </div>
                 </div>
             </div>
@@ -102,10 +103,10 @@
                 <div class="shoping__checkout">
                     <h5>Hóa đơn</h5>
                     <ul>
-                        <li>Giảm giá <span>0 vnđ</span></li>
-                        <li>Thành tiền <span>@String.Format("{0:0,0}", ViewBag.TongTien) vnđ</span></li>
+                        <li>Giảm giá <span>@(Session["MaGiamGia"] != null ? ((KhuyenMai)Session["MaGiamGia"]).PhanTramGiamGia + "%" : "0%")</span></li>
+                        <li>Thành tiền <span>@String.Format("{0:0,0}", ViewBag.TongTien ?? 0) vnđ</span></li>
                     </ul>
-                    <a href="@Url.Action("DatHang","GioHang")" class="primary-btn">THANH TOÁN</a>
+                    <a href="@Url.Action("DatHang", "GioHang")" class="primary-btn">THANH TOÁN</a>
                 </div>
             </div>
         </div>

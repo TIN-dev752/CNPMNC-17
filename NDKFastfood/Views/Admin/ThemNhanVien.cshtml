@@ -16,21 +16,24 @@
             <div class="col-md-3">
                 <h5 style="font-weight:bold;padding-left:120px;padding-bottom:5px">Tên nhân viên</h5>
                 <div style="padding-left: 120px">
-                    @Html.EditorFor(model => model.TenNV, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.TenNV, new { htmlAttributes = new { @class = "form-control", maxlength = "30", required = "required" } })
                     @Html.ValidationMessageFor(model => model.TenNV, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="col-md-2">
                 <h5 style="font-weight:bold;padding-left:30px;padding-bottom:5px">Giới tính</h5>
                 <div style="padding-left: 30px">
-                    @Html.EditorFor(model => model.GioiTinh, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.DropDownListFor(model => model.GioiTinh,
+                        new SelectList(new List<string> { "Nam", "Nữ" }),
+                        "- Chọn giới tính -",
+                        new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="col-md-2">
                 <h5 style="font-weight:bold;padding-left:30px;padding-bottom:5px">Ngày sinh</h5>
                 <div style="padding-left: 30px">
-                    @Html.EditorFor(model => model.NgaySinh, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.TextBoxFor(model => model.NgaySinh, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
                     @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -39,14 +42,14 @@
             <div class="col-md-3">
                 <h5 style="font-weight:bold;padding-left:120px;padding-bottom:5px">Số điện thoại</h5>
                 <div style="padding-left: 120px">
-                    @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control", maxlength = "10", id = "DienThoaiNV", required = "required" } })
                     @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="col-md-4">
                 <h5 style="font-weight:bold;padding-left:30px;padding-bottom:5px">Địa chỉ</h5>
                 <div style="padding-left: 30px">
-                    @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control", maxlength = "100", required = "required" } })
                     @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -55,14 +58,14 @@
             <div class="col-md-3">
                 <h5 style="font-weight:bold;padding-left:120px;padding-bottom:5px">Email</h5>
                 <div style="padding-left: 120px">
-                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", type = "email", required = "required" } })
                     @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="col-md-4">
                 <h5 style="font-weight:bold;padding-left:30px;padding-bottom:5px">Chức vụ</h5>
                 <div style="padding-left: 30px">
-                    @Html.EditorFor(model => model.ChucVu, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.ChucVu, new { htmlAttributes = new { @class = "form-control", required = "required" } })
                     @Html.ValidationMessageFor(model => model.ChucVu, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -71,14 +74,14 @@
             <div class="col-md-3">
                 <h5 style="font-weight:bold;padding-left:120px;padding-bottom:5px">Lương</h5>
                 <div style="padding-left: 120px">
-                    @Html.EditorFor(model => model.Luong, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.Luong, new { htmlAttributes = new { @class = "form-control", min = "0", required = "required" } })
                     @Html.ValidationMessageFor(model => model.Luong, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="col-md-4">
                 <h5 style="font-weight:bold;padding-left:30px;padding-bottom:5px">Ngày bắt đầu làm</h5>
                 <div style="padding-left: 30px">
-                    @Html.EditorFor(model => model.NgayBatDauLam, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.TextBoxFor(model => model.NgayBatDauLam, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date", required = "required" })
                     @Html.ValidationMessageFor(model => model.NgayBatDauLam, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -94,5 +97,17 @@
     </div>
 }
 
+<script>
+    function validateForm() {
+        var dienThoai = document.getElementById("DienThoaiNV").value;
 
+        var regexPhone = /^\d{10}$/;
+        if (!dienThoai.match(regexPhone)) {
+            alert("Số điện thoại phải gồm 10 chữ số.");
+            return false;
+        }
+
+        return true;
+    }
+</script>
 
